@@ -1,0 +1,12 @@
+schema: holon/v0
+kind: wrapper
+build:
+  runner: go-module
+  main: ./cmd/jess-npm
+requires:
+  commands: [go]
+  files: [go.mod]
+delegates:
+  commands: [npm, node]
+artifacts:
+  binary: .op/build/bin/jess-npm
