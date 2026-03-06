@@ -1,4 +1,32 @@
+# ── Identity ──────────────────────────────────────────
 schema: holon/v0
+uuid: "e5f6a7b8-9c0d-1e2f-3a4b-5c6d7e8f9a0b"
+given_name: Jess
+family_name: NPM
+motto: "Calculemus!"
+composer: B. ALTER
+clade: deterministic/toolchain
+status: draft
+born: "2026-03-02"
+
+# ── Lineage ───────────────────────────────────────────
+parents: []
+reproduction: assisted
+generated_by: codex
+
+# ── Description ───────────────────────────────────────
+description: |
+  JavaScript/NPM toolchain holon. Wraps npm and Node.js CLIs, exposing
+  the JS/TS ecosystem as gRPC RPCs - dependency management, builds, tests,
+  scripts, audits, and package introspection.
+  
+  Part of the OP standard suite - the JS counterpart to Rob Go.
+
+# ── Contract ──────────────────────────────────────────
+contract:
+  service: npm.v1.NpmService
+
+# ── Operational ───────────────────────────────────────
 kind: wrapper
 build:
   runner: go-module
@@ -9,4 +37,4 @@ requires:
 delegates:
   commands: [npm, node]
 artifacts:
-  binary: .op/build/bin/jess-npm
+  binary: jess-npm
