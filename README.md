@@ -7,10 +7,6 @@
 **JavaScript/NPM toolchain holon** — wraps the npm/node ecosystem and
 exposes it as gRPC RPCs for the Organic Programming suite.
 
-## Status
-
-🚧 Under construction — Codex prompt in preparation.
-
 ## Contract
 
 - Proto: `protos/npm/v1/npm.proto`
