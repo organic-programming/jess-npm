@@ -21,6 +21,23 @@ description: |
   scripts, audits, and package introspection.
   
   Part of the OP standard suite - the JS counterpart to Rob Go.
+skills:
+  - name: setup-project
+    description: Bootstrap a Node project with package metadata, dependencies, and runnable scripts.
+    when: User wants a fresh JS or TS workspace initialized and ready for development.
+    steps:
+      - Create package metadata with `Init`
+      - Install runtime or dev dependencies with `Install`
+      - Inspect scripts and dependency state with `ReadPackageJson` and `ListDeps`
+      - Run the requested script or build with `RunScript` or `Build`
+  - name: audit-and-fix
+    description: Audit an existing package, update stale dependencies, and verify the project still runs.
+    when: User wants to reduce dependency risk without breaking the current workspace.
+    steps:
+      - Collect vulnerability data with `Audit`
+      - Review stale packages with `Outdated`
+      - Apply updates with `Update` or targeted `Install`
+      - Re-run `Test` or `RunScript` to validate the result
 
 # ── Contract ──────────────────────────────────────────
 contract:
