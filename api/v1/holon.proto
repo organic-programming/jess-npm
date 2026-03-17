@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package npm.v1;
+
+import "holons/v1/manifest.proto";
+import "npm/v1/npm.proto";
+
+option go_package = "github.com/organic-programming/jess-npm/gen/go/npm/v1;npmv1";
+
+option (holons.v1.manifest) = {
+  identity: {
+    schema: "holon/v1"
+    uuid: "e5f6a7b8-9c0d-1e2f-3a4b-5c6d7e8f9a0b"
+    given_name: "Jess"
+    family_name: "NPM"
+    motto: "Calculemus!"
+    composer: "B. ALTER"
+    status: "draft"
+    born: "2026-03-02"
+  }
+  description: "JavaScript/NPM toolchain holon. Wraps npm and Node.js CLIs, exposing the JS/TS ecosystem as gRPC RPCs."
+  lang: "go"
+  kind: "wrapper"
+  build: {
+    runner: "go-module"
+    main: "./cmd/jess-npm"
+  }
+  requires: {
+    commands: ["go", "npm", "node"]
+    files: ["go.mod"]
+  }
+  artifacts: {
+    binary: "jess-npm"
+  }
+  contract: {
+    proto: "api/v1/holon.proto"
+    service: "npm.v1.NpmService"
+    rpcs: [
+      "Init", "Install", "Uninstall", "Update", "Add",
+      "RunScript", "Test", "Build", "NodeExec",
+      "ListDeps", "Audit", "Outdated", "ReadPackageJson",
+      "Pack", "Publish", "CacheClean", "Npx", "Version"
+    ]
+  }
+  skills: [{
+    name: "setup-project"
+    description: "Bootstrap a Node project with package metadata, dependencies, and runnable scripts."
+    when: "User wants a fresh JS or TS workspace initialized and ready for development."
+    steps: [
+      "Create package metadata with `Init`",
+      "Install runtime or dev dependencies with `Install`",
+      "Inspect scripts and dependency state with `ReadPackageJson` and `ListDeps`",
+      "Run the requested script or build with `RunScript` or `Build`"
+    ]
+  }, {
+    name: "audit-and-fix"
+    description: "Audit an existing package, update stale dependencies, and verify the project still runs."
+    when: "User wants to reduce dependency risk without breaking the current workspace."
+    steps: [
+      "Collect vulnerability data with `Audit`",
+      "Review stale packages with `Outdated`",
+      "Apply updates with `Update` or targeted `Install`",
+      "Re-run `Test` or `RunScript` to validate the result"
+    ]
+  }]
+};
