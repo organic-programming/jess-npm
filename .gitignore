@@ -1,8 +1,0 @@
-/jess-npm
-*.exe
-*.test
-*.out
-node_modules/
-.DS_Store
-.idea/
-.vscode/
